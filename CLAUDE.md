@@ -22,10 +22,16 @@ in a local marketplace (`st-skills`). Personal use; enabled per project, never u
 - Refresh after an ST release: re-clone `dev-st` (release) and `research/st-docs`, diff the APIs the
   skills mention, update skills and notes, bump `plugin.json` version.
 
-## Enabling in a project
-From the project folder:
-```
-claude plugin marketplace add E:/Development/SillyTavern/st-skills --scope project
-claude plugin install st-extensions@st-skills --scope project
-```
-This writes the project's `.claude/settings.json`; projects outside ST never see the skills.
+## Publishing and enabling
+- Remote: https://github.com/heltonteixeira/st-skills (public, by the user's decision; the
+  workspace's private-by-default rule does not apply to this repo). Projects install from the remote, so
+  a change reaches them only after it is pushed (and `claude plugin marketplace update st-skills`).
+  Bump `version` in `plugins/st-extensions/.claude-plugin/plugin.json` on every pushed change.
+- Enable in a project, from its folder:
+  ```
+  claude plugin marketplace add heltonteixeira/st-skills --scope project
+  claude plugin install st-extensions@st-skills --scope project
+  ```
+  This writes the project's `.claude/settings.json`; projects outside ST never see the skills.
+- Public repo: never commit anything from this machine (paths, ports, usernames) into the skills
+  or evals; `dev-st/` and `research/st-docs/` stay ignored.

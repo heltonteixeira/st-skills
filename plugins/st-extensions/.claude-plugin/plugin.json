@@ -1,6 +1,7 @@
 {
   "name": "st-extensions",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Build SillyTavern UI extensions and server plugins the way SillyTavern itself does: structure, APIs, events, slash commands, settings, and native-looking UI.",
-  "author": { "name": "Big Boss" }
+  "author": { "name": "Big Boss" },
+  "license": "AGPL-3.0"
 }
