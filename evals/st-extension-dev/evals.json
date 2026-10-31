@@ -1,0 +1,26 @@
+{
+  "skill_name": "st-extension-dev",
+  "evals": [
+    {
+      "id": 1,
+      "name": "slash-command-wordcount",
+      "prompt": "Write a SillyTavern extension called \"Word Count\" that adds a /wordcount slash command. It returns the total word count of the last N chat messages (named argument, default 10) and can be piped into other commands. Add a setting in the Extensions panel to exclude system messages. Give me the complete extension folder ready to drop into SillyTavern.",
+      "expected_output": "Installable third-party extension folder: manifest.json with the fields ST reads, index.js that registers the command via SlashCommandParser/SlashCommand.fromProps with a typed named argument and returns a string, settings initialised with defaults and saved via saveSettingsDebounced, getContext() for chat access.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "background-mood-tagger",
+      "prompt": "I want a SillyTavern extension that, after every AI reply, quietly asks the LLM to classify the reply's mood as one word, saves that mood on the message itself so it survives reloads, and injects \"Current mood: <mood>\" into the prompt at depth 2 for the next generation. It must not break when I switch chats while it's working. Build the whole thing.",
+      "expected_output": "Extension listening to the right event, making a quiet/raw generation, storing the result in message.extra and saving the chat, injecting via setExtensionPrompt with the right type/depth, guarding against chat switches (chat id check), and not re-triggering on its own generation.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "dice-tool-with-server-log",
+      "prompt": "Make a SillyTavern extension that lets the model roll dice through function calling (e.g. \"2d6+3\"), shows the roll result in chat, and also a server plugin that appends every roll to a log file in the current user's data folder. Include both parts and tell me how to install them.",
+      "expected_output": "UI extension registering a function tool via ToolManager/context with JSON-schema parameters and handling unsupported tool calling; server plugin with info/init/exit, router routes, using request.user.directories, sanitised path, called with getRequestHeaders(); install notes including enableServerPlugins.",
+      "files": []
+    }
+  ]
+}

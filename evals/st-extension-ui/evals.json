@@ -1,0 +1,19 @@
+{
+  "skill_name": "st-extension-ui",
+  "evals": [
+    {
+      "id": 1,
+      "name": "scene-notes-settings-panel",
+      "prompt": "Build the settings UI for a SillyTavern extension called \"Scene Notes\": a collapsible section in the Extensions panel with an enable toggle, a textarea for notes, a dropdown for where to inject the notes, a slider for depth 0-10 showing its value, and a Clear button that asks for confirmation first. It should look like it belongs in SillyTavern with any theme. Give me the full extension.",
+      "expected_output": "settings.html using ST's inline-drawer markup and native classes (checkbox_label, text_pole, menu_button), theme CSS variables instead of hard-coded colours, ids prefixed, rendered with renderExtensionTemplateAsync into #extensions_settings(2), confirmation via Popup/callGenericPopup, values persisted.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "message-button-and-wand-menu",
+      "prompt": "Add a SillyTavern extension that puts a small button on every chat message which opens a popup with that message's token count and a Copy button, and an item in the extensions (wand) menu that opens a wider popup listing token counts for the whole chat. It has to work on phones too.",
+      "expected_output": "Per-message button added in ST's extraMesButtons convention with delegated handlers, wand menu item in #extensionsMenu with native markup, popups via Popup/callGenericPopup (wide option), toastr feedback, async token counting via getTokenCountAsync, mobile-friendly (no hover-only UI).",
+      "files": []
+    }
+  ]
+}

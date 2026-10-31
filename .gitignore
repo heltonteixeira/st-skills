@@ -1,0 +1,6 @@
+# Throwaway SillyTavern clone (reference source + test server on :8300)
+dev-st/
+# Official docs clone, re-cloned when refreshing the skills
+research/st-docs/
+# Eval runs (skill-creator workspaces)
+workspace/

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "st-skills",
+  "description": "Skills for building SillyTavern extensions, derived from the SillyTavern source.",
+  "owner": { "name": "Big Boss" },
+  "plugins": [
+    {
+      "name": "st-extensions",
+      "description": "Build SillyTavern UI extensions and server plugins the way SillyTavern itself does: structure, APIs, events, slash commands, settings, and native-looking UI.",
+      "source": "./plugins/st-extensions",
+      "category": "development"
+    }
+  ]
+}
