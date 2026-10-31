@@ -6,14 +6,37 @@
       "name": "scene-notes-settings-panel",
       "prompt": "Build the settings UI for a SillyTavern extension called \"Scene Notes\": a collapsible section in the Extensions panel with an enable toggle, a textarea for notes, a dropdown for where to inject the notes, a slider for depth 0-10 showing its value, and a Clear button that asks for confirmation first. It should look like it belongs in SillyTavern with any theme. Give me the full extension.",
       "expected_output": "settings.html using ST's inline-drawer markup and native classes (checkbox_label, text_pole, menu_button), theme CSS variables instead of hard-coded colours, ids prefixed, rendered with renderExtensionTemplateAsync into #extensions_settings(2), confirmation via Popup/callGenericPopup, values persisted.",
-      "files": []
+      "files": [],
+      "assertions": [
+        "manifest.json is valid JSON with display_name, js and version",
+        "No static imports from SillyTavern internal files (uses SillyTavern.getContext() / SillyTavern.libs)",
+        "LIVE: loads in SillyTavern 1.19.0 with no extension errors in the console or Manage Extensions",
+        "Settings use ST's inline-drawer markup (inline-drawer-toggle + inline-drawer-header + inline-drawer-icon) with no custom toggle click handler",
+        "Uses ST control classes: text_pole for inputs, checkbox_label for the toggle, menu_button for the button",
+        "Extension CSS and inline styles contain no hard-coded colours (only CSS variables)",
+        "Clear asks for confirmation through ST's Popup/callGenericPopup, not window.confirm",
+        "The depth slider shows its current value and the value is saved",
+        "LIVE: the drawer appears in the Extensions panel and opens with ST's own toggle"
+      ]
     },
     {
       "id": 2,
       "name": "message-button-and-wand-menu",
       "prompt": "Add a SillyTavern extension that puts a small button on every chat message which opens a popup with that message's token count and a Copy button, and an item in the extensions (wand) menu that opens a wider popup listing token counts for the whole chat. It has to work on phones too.",
       "expected_output": "Per-message button added in ST's extraMesButtons convention with delegated handlers, wand menu item in #extensionsMenu with native markup, popups via Popup/callGenericPopup (wide option), toastr feedback, async token counting via getTokenCountAsync, mobile-friendly (no hover-only UI).",
-      "files": []
+      "files": [],
+      "assertions": [
+        "manifest.json is valid JSON with display_name, js and version",
+        "No static imports from SillyTavern internal files (uses SillyTavern.getContext() / SillyTavern.libs)",
+        "LIVE: loads in SillyTavern 1.19.0 with no extension errors in the console or Manage Extensions",
+        "Per-message button is a .mes_button inside the message buttons area, handled by one delegated click handler",
+        "Wand-menu item is in #extensionsMenu using list-group-item with an extensionsMenuExtensionButton icon",
+        "Popups use ST's Popup/callGenericPopup, with a wide/wider/large option for the whole-chat list",
+        "Token counts come from getTokenCountAsync",
+        "Nothing essential depends on :hover (usable on touch screens)",
+        "LIVE: every rendered message (including ones present before load) has the button, and clicking it opens a popup with a number",
+        "LIVE: the wand menu item exists and opens the whole-chat popup"
+      ]
     }
   ]
 }
